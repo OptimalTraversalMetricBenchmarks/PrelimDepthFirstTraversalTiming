@@ -1,4 +1,4 @@
-FROM comunica/query-sparql-link-traversal-solid:v0.2.0
+FROM comunica/query-sparql-link-traversal-solid:latest
 
 ARG CONFIG_CLIENT
 ARG QUERY_TIMEOUT
@@ -14,6 +14,6 @@ ENV QUERY_TIMEOUT=$QUERY_TIMEOUT
 ENV LOG_LEVEL=$LOG_LEVEL
 
 EXPOSE 3000
-
+RUN echo "Bing bong"
 ENTRYPOINT []
-CMD [ "/bin/sh", "-c", "node --max-old-space-size=$MAX_MEMORY ./bin/http.js -c /tmp/context.json -p 3000 -t $QUERY_TIMEOUT -l $LOG_LEVEL -i" ]
+CMD [ "/bin/sh", "-c", "node --max-old-space-size=$MAX_MEMORY ./bin/http.js --idp void -c /tmp/context.json -p 3000 -t $QUERY_TIMEOUT -l $LOG_LEVEL -i" ]
