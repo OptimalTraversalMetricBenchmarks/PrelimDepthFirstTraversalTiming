@@ -3,24 +3,29 @@
   "@id": "urn:rdf-dataset-fragmenter:default",
   "@type": "Fragmenter",
   "quadSource": {
-	"@id": "urn:rdf-dataset-fragmenter:source:default",
-	"@type": "QuadSourceComposite",
-	"sources": [
-	  {
-	    "@type": "QuadSourceFile",
-	    "filePath": "out-snb/social_network/social_network_static_0_0.ttl"
-	  },
-	  {
-	    "@type": "QuadSourceFile",
-	    "filePath": "out-snb/social_network/social_network_person_0_0.ttl"
-	  },
-	  {
-	    "@type": "QuadSourceFile",
-	    "filePath": "out-snb/social_network/social_network_activity_0_0.ttl"
-	  }
-	]
+    "@id": "urn:rdf-dataset-fragmenter:source:default",
+    "@type": "QuadSourceComposite",
+    "sources": [
+      {
+        "@type": "QuadSourceFile",
+        "filePath": "out-snb/social_network/social_network_static_0_0.ttl"
+      },
+      {
+        "@type": "QuadSourceFile",
+        "filePath": "out-snb/social_network/social_network_person_0_0.ttl"
+      },
+      {
+        "@type": "QuadSourceFile",
+        "filePath": "out-snb/social_network/social_network_activity_0_0.ttl"
+      }
+    ]
   },
   "transformers": [
+    {
+      "@type": "QuadTransformerBlankToNamed",
+      "searchRegex": "^(b[0-9]*_tagclass)",
+      "replacementString": "http://solidbench-server:3000/www.ldbc.eu/tagclass/$1"
+    },
     {
       "@type": "QuadTransformerReplaceIri",
       "searchRegex": "^http://www.ldbc.eu",
@@ -440,11 +445,13 @@
   "fragmentationStrategy": {
     "@type": "FragmentationStrategyComposite",
     "strategies": [
-      { "@type": "FragmentationStrategySubject" }
+      {
+        "@type": "FragmentationStrategySubject"
+      }
     ]
   },
   "quadSink": {
-	"@id": "urn:rdf-dataset-fragmenter:sink:default",
+    "@id": "urn:rdf-dataset-fragmenter:sink:default",
     "@type": "QuadSinkComposite",
     "sinks": [
       {

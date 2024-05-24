@@ -18,14 +18,14 @@
   "dockerfileServer": "input/dockerfiles/Dockerfile-server",
   "endpointUrl": "http://localhost:3001/sparql",
   "serverPort": 3000,
-  "serverLogLevel": "info",
+  "serverLogLevel": "debug",
   "serverBaseUrl": "http://solidbench-server:3000/",
   "serverResourceConstraints": {
     "@type": "StaticDockerResourceConstraints",
     "cpu_percentage": 100
   },
   "queryRunnerReplication": 5,
-  "queryRunnerWarmupRounds": 0,
+  "queryRunnerWarmupRounds": 1,
   "queryRunnerRequestDelay": 0,
   "queryRunnerEndpointAvailabilityCheckTimeout": 1000,
   "queryTimeoutFallback": 300000,
